@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCategoryRequest extends FormRequest
+class CreateTagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,10 @@ class CreateCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //Validate name
-            'name'=>'required|unique:categories'
-      
-        ];
+       return [
+//Validate
+'name'=> 'required'
+];
+
     }
 }
