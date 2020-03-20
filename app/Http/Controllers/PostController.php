@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
+use App\Tag;
 
 
 
@@ -39,7 +40,7 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create')->with('categories', Category::all());
+        return view('posts.create')->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -51,8 +52,9 @@ class PostController extends Controller
     public function store(CreatePostRequest $request)
 
     {
+//dd($request);
         $image = $request->image->store('posts');
-        Post::create([
+       $post = Post::create([
 'title'=>$request->title,
 'description'=>$request->description,
 'content'=>$request->content,
@@ -60,6 +62,12 @@ class PostController extends Controller
 'category_id'=>$request->category,
 //'published_at'=>''
 ]);
+
+       if($request->tags){
+
+  $post->tags()->attach($request->tags);
+}
+
 //Put a session message
 session()->flash('success', 'Post created successfully!');
 
@@ -90,7 +98,7 @@ return redirect(route('posts.index'));
     public function edit(Post $post)
     {
         //
-        return view('posts.create')->with('post', $post)->with('categories', Category::all());
+        return view('posts.create')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -104,7 +112,7 @@ return redirect(route('posts.index'));
 
     {
         //
-        $post->update([
+      $post->update([
 'title'=> $request->title,
 'content' => $request->content,
 'description'=> $request->description

@@ -12,7 +12,7 @@ class Post extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description' , 'content', 'image', 'published_at', 'category_id'];
+    protected $fillable = ['title', 'description' , 'content', 'image', 'published_at', 'category_id',];
 
 //Delete Post image from storage
     public function deleteImage(){
@@ -27,9 +27,9 @@ class Post extends Model
     }
       ///Make relations to tag
     ///Name of the function IS THE MODEL IN SMALL CASES
-    public function tag(){
-      return $this->hasMany(Tag::class);
+    public function tags(){
+return $this->belongsToMany(Tag::class);
+}
 
-    }
 
 }

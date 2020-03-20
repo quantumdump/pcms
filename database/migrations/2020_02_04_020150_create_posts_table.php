@@ -23,7 +23,6 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->SoftDeletes();
             $table->integer('category_id');
-            $table->integer('tag_id');
 
 
         });

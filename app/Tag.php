@@ -9,10 +9,10 @@ class Tag extends Model
     //
      ///Make relations to category
     ///Name of the function IS THE MODEL IN SMALL CASES
-    public function post(){
-      return $this->hasMany(Post::class);
+  public function posts(){
+return $this->belongsToMany(Post::class);
+}
 
-    }
 
 
 
