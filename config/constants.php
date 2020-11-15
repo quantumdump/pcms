@@ -5,7 +5,7 @@ return [
 	'options'=>[
 		'option_website_name'=> 'Simple CMS',
 		'option_creator_name'=> 'Samba Traore',
-		'option_columns_quantity'=> 3,
+		'option_columns_quantity'=> 2,
 
 
 	],

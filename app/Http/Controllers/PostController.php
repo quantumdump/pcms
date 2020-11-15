@@ -112,10 +112,19 @@ return redirect(route('posts.index'));
 
     {
         //
+
+        if($request->tags){
+  $post->tags()->sync($request->tags);
+}
+
+
+
+
       $post->update([
 'title'=> $request->title,
 'content' => $request->content,
-'description'=> $request->description
+'description'=> $request->description,
+'category_id'=>$request->category,
 ]);
 //Put a session message
 session()->flash('success', 'Post updated successfully!');

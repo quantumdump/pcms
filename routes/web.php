@@ -31,3 +31,10 @@ Route::get('trashed-posts', 'PostController@trashed')->name('trashed-posts.index
 Route::put('restore-post/{post}', 'PostController@restore')->name('restore-post');
 }
 );
+
+
+Route::middleware(['auth', 'admin'])->group(function(){
+Route::get('users', 'UserController@index')->name('users.index');
+});
+Route::post('users/{user}/make_admin', 'UserController@makeAdmin')->name('users.make-admin');
+Route::post('users/{user}/undo_admin', 'UserController@undoAdmin')->name('users.undo-admin');

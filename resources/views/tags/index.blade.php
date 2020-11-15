@@ -28,7 +28,7 @@
           {{$tag->name}}
         </td>
         <td>
-          {{$tag->post->count()}}
+          {{$tag->posts->count()}}
         </td>
         <td>
 

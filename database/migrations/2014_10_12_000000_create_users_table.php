@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('role')->default('writer');//Add writer and admin role
+            $table->text('about')->nullable();
+
             $table->timestamps();
         });
     }

@@ -104,8 +104,19 @@ return redirect(route('tags.index'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
         //
+         //
+        if($tag->posts->count()>0){
+  session()->flash('error', 'Tag cannot be deleted due to posts dependent on it');
+        return redirect()->back();
+}
+
+        $tag->delete();
+
+        session()->flash('success', 'Tag deleted successfully');
+        return redirect(route('tags.index'));
     }
+    
 }
